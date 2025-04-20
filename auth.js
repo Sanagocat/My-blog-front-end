@@ -1,5 +1,5 @@
 // auth.js
-const verifyURL = "https://b82cdebd-d75f-4f5e-8101-d9c4e83017ec-00-50jb4toe0nbv.worf.replit.dev:8080";
+const verifyURL = "https://anonymous-portal-back-end-8f41d2684ed2.herokuapp.com";
 
 async function checkAuthAndRedirect() {
     //1. load token
