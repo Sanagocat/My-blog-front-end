@@ -3,7 +3,7 @@ const verifyURL = "https://anonymous-portal-back-end-8f41d2684ed2.herokuapp.com"
 
 async function checkAuthAndRedirect() {
     //1. load token
-    const token = localStorage.getItem("myblogtoken");
+    const token = getCookie("myblogtoken");
     console.log(token);
     if (token == "") {
         console.log("NULL!!");
@@ -35,5 +35,19 @@ async function checkAuthAndRedirect() {
 
 function redirectToLogin() {
     alert("로그인이 필요합니다.");
-    window.location.href = "/login.html";
+    window.location.href = "https://www.anonymousportal.com/login.html";
+}
+// 쿠키 가져오기 함수
+function getCookie(key) { //mainURL은 현재 접속중인 URL만 가져옴
+    const name = encodeURIComponent(key) + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const cookies = decodedCookie.split(';');
+    console.log(cookies);
+    for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.indexOf(name) === 0) {
+            return cookie.substring(name.length, cookie.length);
+        }
+    }
+    return null;
 }
